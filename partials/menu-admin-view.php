@@ -1,19 +1,25 @@
+<?php
+$sites = [
+    // 'http://localhost/mrdwight/contact-us/',
+    'https://www.flyskyjetair.com',
+    // 'https://www.google.com',
+];
+?>
+
 <div class="wrap">
     <h1>Contact Express</h1>
-    <textarea style="width:500px" rows="4">http://localhost/mrdwight/contact-us/</textarea>
+    <textarea style="width:500px" rows="4"><?php array_walk($sites,function($site){
+        echo $site . "\n";
+    });?></textarea>
 </div>
 
 <?php
 
-$sites = [
-    'http://localhost/mrdwight/contact-us/'
-];
-
 foreach ($sites as $site) {
     $contactform = new ContactXpress($site);
-    echo "<pre>";
-    var_dump($contactform->log);
-    echo "</pre>";
+    $contactform->formLookUp();
+    var_dump($contactform->urls);
+    $contactform->showlog();
 }
 
 ?>
