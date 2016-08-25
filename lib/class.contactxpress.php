@@ -164,13 +164,72 @@ if(!class_exists('ContactXpress')){
 
                     // If Exist try to grab all links
                     $this->getAllUrlsFromSitemap($uri);
-
                     $this->logger('Lookup','Total Grabbed Unique URLS : '.count($this->urls),2);
+
+
+
+                    foreach ($this->urls as $formurl) {
+                        $this->logger('Fillup','Trying to find forms on : '.$formurl,2);
+                        $this->findForm($formurl);
+                    }
+
+
                     // $this->logger('Lookup','Grabbed URLS : '.count($this->urls),2);
                 }else{
                     $this->logger('Lookup','Sitemap URI : '.$uri.' doesnt exist',0);
                 }
             }
+
+        }
+
+        function findForm($url){
+            echo '<pre>';
+            $this->logger('Fillup','Inspecting URL : '.$url,2);
+            $this->browser->visit($url);
+            $this->page = $this->browser->getPage();
+            $formshere = $this->page->findAll('xpath', '//form');
+            if(count($formshere)){
+                $this->logger('Fillup','Possible Forms found : '.count($formshere),1);
+                $validForms = 0;
+                foreach ($formshere as $form) {
+                    $numInput = count($form->findAll('css','input'));
+                    $this->logger('Fillup','Inputs inside form : '.$numInput,1);
+                    $inputsRequiredToValidate = [
+                        'name',
+                        'email',
+                        'message',
+                    ];
+                    $found = 0;
+                    foreach ($inputsRequiredToValidate as $input) {
+
+                        // For Case Insensitivity
+                        $input = strtolower($input);
+                        $totalFound = (
+                        count($form->findAll('css','[name*="'.$input.'"]')) + // name
+                        count($form->findAll('css','[name*="'.ucfirst($input).'"]')) + // Name
+                        count($form->findAll('css','[name*="'.strtoupper($input).'"]'))); // NAME
+
+                        if($totalFound){
+                            $this->logger('Fillup','Looking for Field : '.'[name*="'.$input.'"] Found'.'',1);
+                            $found++;
+                        }else{
+                            $this->logger('Fillup','Looking for Field : '.'[name*="'.$input.'"] Not Found'.'',1);
+                        }
+                    }
+
+                    if($found){
+                        $validForms++;
+                    }
+                    
+                    $this->logger('Fillup','Possible Forms found : '.$found.'/'.count($inputsRequiredToValidate).' inputs passed',1);
+
+                }
+
+                $this->logger('Fillup','Valid Forms : '.$validForms.'/'.count($formshere),2);
+            }else{
+                $this->logger('Fillup','No Forms found',0);
+            }
+            echo '</pre>';
 
         }
 

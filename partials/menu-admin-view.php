@@ -1,7 +1,7 @@
 <?php
 $sites = [
-    'http://localhost/mrdwight',
-    'https://www.flyskyjetair.com',
+    // 'http://localhost/mrdwight',
+    // 'https://www.flyskyjetair.com',
     'https://www.google.com',
 ];
 ?>
