@@ -14,6 +14,7 @@ if(!class_exists('ContactXpress')){
                 'sitemap_index.xml',
             ],
             'contact' => [
+                'contact',
                 'contactus',
                 'contact-us',
                 'about',
@@ -66,9 +67,6 @@ if(!class_exists('ContactXpress')){
             }
             $this->testedUrls[] = hash('crc32b',$uri);
 
-            // $strXml = $this->getFileContentsHTTPS($uri);
-            // var_dump($strXml);
-
             $driver = new \Behat\Mink\Driver\GoutteDriver();
             $browser = new \Behat\Mink\Session($driver);
             $browser->start();
@@ -76,37 +74,51 @@ if(!class_exists('ContactXpress')){
             $page = $browser->getPage();
 
             if($page){
+                $xmlcont = $page->getContent();
+
+                try{
+                    $xmlparser = @simplexml_load_string($xmlcont);
+                }catch(Exception $e){
+                    var_dump($xmlcont);
+                }
+
                 $this->logger('Lookup','Parsing Sitemap URI : '.$uri,2);
-                $locs = $page->findAll('xpath','//loc');
-                foreach ($locs as $key => $loc) {
-                    $locurl = $loc->getHtml();
-                    $urls[hash('crc32b',$locurl)] = strval($locurl);
+
+                $urls = [];
+                if($xmlparser){
+                    switch ($xmlparser->getName()) {
+                        case 'urlset':
+                        foreach ($xmlparser->url as $urltag) {
+                            foreach ($urltag->loc as $loctag) {
+                                $urls[hash('crc32b',$loctag->__toString())] = strval($loctag->__toString());
+                            }
+                        }
+                        break;
+                        case 'sitemapindex':
+                        foreach ($xmlparser->sitemap as $sitemaptag) {
+                            foreach ($sitemaptag->loc as $loctag) {
+                                foreach ($this->variations['sitemap'] as $str) {
+                                    if(strpos($loctag, $str)!==false){
+                                        $this->getAllUrlsFromSitemap($loctag->__toString());
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        break;
+                    }
                 }
 
                 $grabbed = 0;
                 // Check if the gathered URLS here are sitemaps
                 foreach ($urls as $key => $url) {
 
-                    $isxml = false;
-
-                    foreach ($this->variations['sitemap'] as $str) {
+                    // Add Only URLS that are similar to what we are looking for
+                    foreach ($this->variations['contact'] as $str) {
                         if(strpos($url, $str)!==false){
-                            $isxml = true;
+                            $grabbed++;
+                            $this->urls[hash('crc32b',$url)] = $url;
                             break;
-                        }
-                    }
-
-                    if($isxml){
-                        $this->getAllUrlsFromSitemap($url);
-                    }else{
-
-                        // Add Only URLS that are similar to what we are looking for
-                        foreach ($this->variations['contact'] as $str) {
-                            if(strpos($url, $str)!==false){
-                                $grabbed++;
-                                $this->urls[$key] = $url;
-                                break;
-                            }
                         }
                     }
                 }

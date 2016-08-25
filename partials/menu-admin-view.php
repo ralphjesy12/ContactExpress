@@ -1,8 +1,8 @@
 <?php
 $sites = [
-    // 'http://localhost/mrdwight/contact-us/',
+    'http://localhost/mrdwight',
     'https://www.flyskyjetair.com',
-    // 'https://www.google.com',
+    'https://www.google.com',
 ];
 ?>
 
@@ -11,8 +11,8 @@ $sites = [
     <textarea style="width:500px" rows="4"><?php array_walk($sites,function($site){
         echo $site . "\n";
     });?></textarea>
-</div>
 
+</div>
 <?php
 
 foreach ($sites as $site) {
