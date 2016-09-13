@@ -1,8 +1,8 @@
 <?php
 $sites = [
     // 'http://localhost/mrdwight',
-    // 'https://www.flyskyjetair.com',
-    'https://www.google.com',
+    'https://www.flyskyjetair.com',
+    // 'https://www.google.com',
 ];
 ?>
 
@@ -23,3 +23,15 @@ foreach ($sites as $site) {
 }
 
 ?>
+<!-- <script>
+if (!!window.EventSource) {
+    console.log('SSE Started');
+    var source = new EventSource("<?=CONTACTXP_PLUGIN_URL?>lib/sse.php");
+    console.log(source);
+    source.addEventListener("log", function(e) {
+        console.log(e.data);
+    }, false);
+} else {
+    alert("Your browser does not support Server-sent events! Please upgrade it!");
+}
+</script> -->

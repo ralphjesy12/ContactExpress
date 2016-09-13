@@ -16,12 +16,13 @@ define( 'CONTACTXP_DEBUG_LOG' , true );
 
 require_once( CONTACTXP_PLUGIN_DIR . 'vendor/autoload.php');
 require_once( CONTACTXP_PLUGIN_DIR . 'lib/class.contactxpress.php');
+// require_once( CONTACTXP_PLUGIN_DIR . 'lib/class.domainlist.php');
 require_once( CONTACTXP_PLUGIN_DIR . 'lib/class.plugin.php');
 
 if(class_exists('CONTACTXP')){
 
-    // register_activation_hook( __FILE__ , [ 'AVACARE' , 'activate' ] );
-    // register_deactivation_hook( __FILE__ , [ 'AVACARE' , 'deactivate' ] );
+    register_activation_hook( __FILE__ , [ 'CONTACTXP' , 'activate' ] );
+    register_deactivation_hook( __FILE__ , [ 'CONTACTXP' , 'deactivate' ] );
     $CONTACTXP = new CONTACTXP();
 
 }

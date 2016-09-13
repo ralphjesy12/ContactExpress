@@ -1,4 +1,4 @@
-<?php if(!defined('CONTACTXP_VERSION')) die('Fatal Error');
+<?php //if(!defined('CONTACTXP_VERSION')) die('Fatal Error');
 
 if(!class_exists('ContactXpress')){
 
@@ -8,6 +8,7 @@ if(!class_exists('ContactXpress')){
         public $url;
         public $page;
         public $log;
+        public $logname;
         public $variations = [
             'sitemap' => [
                 'sitemap.xml',
@@ -33,6 +34,9 @@ if(!class_exists('ContactXpress')){
             $this->browser = new \Behat\Mink\Session($driver);
             $this->browser->start();
             $this->url = $url;
+
+            $this->logname = time().'.log';
+            // var_dump($this->logname);
             // $this->fill();
         }
 
@@ -57,6 +61,15 @@ if(!class_exists('ContactXpress')){
                     ],
                 ]
             ]));
+        }
+
+        function getPageTitle($uri){
+            $driver = new \Behat\Mink\Driver\GoutteDriver();
+            $browser = new \Behat\Mink\Session($driver);
+            $browser->start();
+            $browser->visit($uri);
+            $page = $browser->getPage();
+            return $page->find('css','title')->getText();
         }
 
         function getAllUrlsFromSitemap($uri){
@@ -117,7 +130,14 @@ if(!class_exists('ContactXpress')){
                     foreach ($this->variations['contact'] as $str) {
                         if(strpos($url, $str)!==false){
                             $grabbed++;
-                            $this->urls[hash('crc32b',$url)] = $url;
+
+                            $hashkey = hash('crc32b',$url);
+                            if(empty($this->urls[$hashkey])){
+                                $this->urls[$hashkey] = [
+                                    'url' => $url,
+                                    'title' => $this->getPageTitle($url)
+                                ];
+                            }
                             break;
                         }
                     }
@@ -168,9 +188,9 @@ if(!class_exists('ContactXpress')){
 
 
 
-                    foreach ($this->urls as $formurl) {
-                        $this->logger('Fillup','Trying to find forms on : '.$formurl,2);
-                        $this->findForm($formurl);
+                    foreach ($this->urls as $k => $formurl) {
+                        $this->logger('Fillup','Trying to find forms on : '.$formurl['url'],2);
+                        $this->findForm($formurl['url'],$k);
                     }
 
 
@@ -182,8 +202,8 @@ if(!class_exists('ContactXpress')){
 
         }
 
-        function findForm($url){
-            echo '<pre>';
+        function findForm($url,$key = 0){
+            // echo '<pre>';
             $this->logger('Fillup','Inspecting URL : '.$url,2);
             $this->browser->visit($url);
             $this->page = $this->browser->getPage();
@@ -220,16 +240,19 @@ if(!class_exists('ContactXpress')){
                     if($found){
                         $validForms++;
                     }
-                    
+
                     $this->logger('Fillup','Possible Forms found : '.$found.'/'.count($inputsRequiredToValidate).' inputs passed',1);
 
                 }
-
+                $this->urls[$key]['forms'] = [
+                    'found' => count($formshere),
+                    'valid' => $validForms
+                ];
                 $this->logger('Fillup','Valid Forms : '.$validForms.'/'.count($formshere),2);
             }else{
                 $this->logger('Fillup','No Forms found',0);
             }
-            echo '</pre>';
+            // echo '</pre>';
 
         }
 
@@ -268,6 +291,8 @@ if(!class_exists('ContactXpress')){
                     'message' => $message,
                     'time' => date('Y-m-d H:i:s')
                 ];
+
+                $this->writeLog('log',"[".$lognow['time']."]".sprintf("[%-'#7s]",   $lognow['status']).' : '.$lognow['type'].' ~ '.$lognow['message']);
                 $this->log[] = $lognow;
                 if(CONTACTXP_DEBUG_LOG){
                     $logfile = fopen(CONTACTXP_PLUGIN_DIR . "debug.log", "a") or die("Unable to open file!");
@@ -284,6 +309,22 @@ if(!class_exists('ContactXpress')){
                 echo "[".$log['time']."]".sprintf("[%-'#7s]",   $log['status']).' : '.$log['type'].' ~ '.$log['message'].'<br>';
             }
             echo '</pre>';
+        }
+
+        function writeLog($type = 'log',$msg = '') {
+            if(CONTACTXP_DEBUG_LOG){
+                if(!is_string($msg)){
+                    $msg = JSON_ENCODE($msg);
+                }
+                if(!$this->logname){
+                    $this->logname = time().'.log';
+                }
+
+                $logfile = fopen(CONTACTXP_PLUGIN_DIR . "logs/".$this->logname, "a") or die("Unable to open file!");
+                $txt = $msg."\n";
+                fwrite($logfile, $txt);
+                fclose($logfile);
+            }
         }
 
     }

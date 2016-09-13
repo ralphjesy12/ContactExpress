@@ -1,0 +1,411 @@
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-04 12:11:27"}
+{"status":"INFO","type":"Lookup","message":"Trying Sitemap URI Variations","time":"2016-09-04 12:11:27"}
+{"status":"INFO","type":"Lookup","message":"Trying Sitemap URI : https:\/\/www.google.com\/sitemap.xml","time":"2016-09-04 12:11:27"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-04 12:14:30"}
+{"status":"INFO","type":"Lookup","message":"Trying Sitemap URI Variations","time":"2016-09-04 12:14:30"}
+{"status":"INFO","type":"Lookup","message":"Trying Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap.xml","time":"2016-09-04 12:14:30"}
+{"status":"OK","type":"Lookup","message":"Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap.xml Exist","time":"2016-09-04 12:14:37"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap.xml","time":"2016-09-04 12:14:41"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/post-sitemap.xml","time":"2016-09-04 12:14:43"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/post-sitemap.xml]: 1","time":"2016-09-04 12:14:43"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/page-sitemap.xml","time":"2016-09-04 12:14:46"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/page-sitemap.xml]: 1","time":"2016-09-04 12:14:46"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/w4pl-sitemap.xml","time":"2016-09-04 12:14:47"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/w4pl-sitemap.xml]: 1","time":"2016-09-04 12:14:47"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/category-sitemap.xml","time":"2016-09-04 12:14:49"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/category-sitemap.xml]: 1","time":"2016-09-04 12:14:49"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/sitemap.xml]: 1","time":"2016-09-04 12:14:49"}
+{"status":"INFO","type":"Lookup","message":"Total Grabbed Unique URLS : 1","time":"2016-09-04 12:14:49"}
+{"status":"INFO","type":"Fillup","message":"Trying to find forms on : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-04 12:14:49"}
+{"status":"INFO","type":"Fillup","message":"Inspecting URL : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-04 12:14:49"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 2","time":"2016-09-04 12:14:53"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 5","time":"2016-09-04 12:14:53"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Not Found","time":"2016-09-04 12:14:53"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Not Found","time":"2016-09-04 12:14:53"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Not Found","time":"2016-09-04 12:14:53"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 0\/3 inputs passed","time":"2016-09-04 12:14:53"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 10","time":"2016-09-04 12:14:53"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Found","time":"2016-09-04 12:14:53"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Found","time":"2016-09-04 12:14:53"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Found","time":"2016-09-04 12:14:53"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 3\/3 inputs passed","time":"2016-09-04 12:14:53"}
+{"status":"INFO","type":"Fillup","message":"Valid Forms : 1\/2","time":"2016-09-04 12:14:53"}
+{"status":"INFO","type":"Lookup","message":"Trying Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap_index.xml","time":"2016-09-04 12:14:53"}
+{"status":"OK","type":"Lookup","message":"Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap_index.xml Exist","time":"2016-09-04 12:14:55"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap_index.xml","time":"2016-09-04 12:14:58"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/sitemap_index.xml]: 1","time":"2016-09-04 12:14:58"}
+{"status":"INFO","type":"Lookup","message":"Total Grabbed Unique URLS : 1","time":"2016-09-04 12:14:58"}
+{"status":"INFO","type":"Fillup","message":"Trying to find forms on : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-04 12:14:58"}
+{"status":"INFO","type":"Fillup","message":"Inspecting URL : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-04 12:14:58"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 2","time":"2016-09-04 12:15:01"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 5","time":"2016-09-04 12:15:01"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Not Found","time":"2016-09-04 12:15:01"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Not Found","time":"2016-09-04 12:15:01"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Not Found","time":"2016-09-04 12:15:01"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 0\/3 inputs passed","time":"2016-09-04 12:15:01"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 10","time":"2016-09-04 12:15:01"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Found","time":"2016-09-04 12:15:01"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Found","time":"2016-09-04 12:15:01"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Found","time":"2016-09-04 12:15:01"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 3\/3 inputs passed","time":"2016-09-04 12:15:01"}
+{"status":"INFO","type":"Fillup","message":"Valid Forms : 1\/2","time":"2016-09-04 12:15:01"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-04 12:27:49"}
+{"status":"INFO","type":"Lookup","message":"Trying Sitemap URI Variations","time":"2016-09-04 12:27:49"}
+{"status":"INFO","type":"Lookup","message":"Trying Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap.xml","time":"2016-09-04 12:27:49"}
+{"status":"OK","type":"Lookup","message":"Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap.xml Exist","time":"2016-09-04 12:27:58"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap.xml","time":"2016-09-04 12:28:02"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/post-sitemap.xml","time":"2016-09-04 12:28:06"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/post-sitemap.xml]: 1","time":"2016-09-04 12:28:06"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/page-sitemap.xml","time":"2016-09-04 12:28:08"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/page-sitemap.xml]: 1","time":"2016-09-04 12:28:08"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/w4pl-sitemap.xml","time":"2016-09-04 12:28:10"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/w4pl-sitemap.xml]: 1","time":"2016-09-04 12:28:10"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/category-sitemap.xml","time":"2016-09-04 12:28:12"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/category-sitemap.xml]: 1","time":"2016-09-04 12:28:12"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/sitemap.xml]: 1","time":"2016-09-04 12:28:12"}
+{"status":"INFO","type":"Lookup","message":"Total Grabbed Unique URLS : 1","time":"2016-09-04 12:28:12"}
+{"status":"INFO","type":"Fillup","message":"Trying to find forms on : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-04 12:28:12"}
+{"status":"INFO","type":"Fillup","message":"Inspecting URL : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-04 12:28:12"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 2","time":"2016-09-04 12:28:14"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 5","time":"2016-09-04 12:28:14"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Not Found","time":"2016-09-04 12:28:14"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Not Found","time":"2016-09-04 12:28:14"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Not Found","time":"2016-09-04 12:28:14"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 0\/3 inputs passed","time":"2016-09-04 12:28:14"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 10","time":"2016-09-04 12:28:14"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Found","time":"2016-09-04 12:28:14"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Found","time":"2016-09-04 12:28:14"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Found","time":"2016-09-04 12:28:14"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 3\/3 inputs passed","time":"2016-09-04 12:28:14"}
+{"status":"INFO","type":"Fillup","message":"Valid Forms : 1\/2","time":"2016-09-04 12:28:14"}
+{"status":"INFO","type":"Lookup","message":"Trying Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap_index.xml","time":"2016-09-04 12:28:14"}
+{"status":"OK","type":"Lookup","message":"Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap_index.xml Exist","time":"2016-09-04 12:28:17"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap_index.xml","time":"2016-09-04 12:28:19"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/sitemap_index.xml]: 1","time":"2016-09-04 12:28:19"}
+{"status":"INFO","type":"Lookup","message":"Total Grabbed Unique URLS : 1","time":"2016-09-04 12:28:19"}
+{"status":"INFO","type":"Fillup","message":"Trying to find forms on : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-04 12:28:19"}
+{"status":"INFO","type":"Fillup","message":"Inspecting URL : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-04 12:28:19"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 2","time":"2016-09-04 12:28:22"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 5","time":"2016-09-04 12:28:22"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Not Found","time":"2016-09-04 12:28:22"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Not Found","time":"2016-09-04 12:28:22"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Not Found","time":"2016-09-04 12:28:22"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 0\/3 inputs passed","time":"2016-09-04 12:28:22"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 10","time":"2016-09-04 12:28:22"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Found","time":"2016-09-04 12:28:22"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Found","time":"2016-09-04 12:28:22"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Found","time":"2016-09-04 12:28:22"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 3\/3 inputs passed","time":"2016-09-04 12:28:22"}
+{"status":"INFO","type":"Fillup","message":"Valid Forms : 1\/2","time":"2016-09-04 12:28:22"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-13 14:48:42"}
+{"status":"INFO","type":"Lookup","message":"Trying Sitemap URI Variations","time":"2016-09-13 14:48:43"}
+{"status":"INFO","type":"Lookup","message":"Trying Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap.xml","time":"2016-09-13 14:48:43"}
+{"status":"OK","type":"Lookup","message":"Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap.xml Exist","time":"2016-09-13 14:49:05"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap.xml","time":"2016-09-13 14:49:09"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/post-sitemap.xml","time":"2016-09-13 14:49:14"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/post-sitemap.xml]: 1","time":"2016-09-13 14:49:14"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/page-sitemap.xml","time":"2016-09-13 14:49:17"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/page-sitemap.xml]: 1","time":"2016-09-13 14:49:17"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/w4pl-sitemap.xml","time":"2016-09-13 14:49:19"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/w4pl-sitemap.xml]: 1","time":"2016-09-13 14:49:19"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/category-sitemap.xml","time":"2016-09-13 14:49:21"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/category-sitemap.xml]: 1","time":"2016-09-13 14:49:21"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/sitemap.xml]: 1","time":"2016-09-13 14:49:21"}
+{"status":"INFO","type":"Lookup","message":"Total Grabbed Unique URLS : 1","time":"2016-09-13 14:49:21"}
+{"status":"INFO","type":"Fillup","message":"Trying to find forms on : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-13 14:49:21"}
+{"status":"INFO","type":"Fillup","message":"Inspecting URL : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-13 14:49:21"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 2","time":"2016-09-13 14:49:30"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 5","time":"2016-09-13 14:49:31"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Not Found","time":"2016-09-13 14:49:31"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Not Found","time":"2016-09-13 14:49:31"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Not Found","time":"2016-09-13 14:49:31"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 0\/3 inputs passed","time":"2016-09-13 14:49:31"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 10","time":"2016-09-13 14:49:31"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Found","time":"2016-09-13 14:49:31"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Found","time":"2016-09-13 14:49:31"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Found","time":"2016-09-13 14:49:31"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 3\/3 inputs passed","time":"2016-09-13 14:49:31"}
+{"status":"INFO","type":"Fillup","message":"Valid Forms : 1\/2","time":"2016-09-13 14:49:31"}
+{"status":"INFO","type":"Lookup","message":"Trying Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap_index.xml","time":"2016-09-13 14:49:31"}
+{"status":"OK","type":"Lookup","message":"Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap_index.xml Exist","time":"2016-09-13 14:49:33"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap_index.xml","time":"2016-09-13 14:49:34"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/sitemap_index.xml]: 1","time":"2016-09-13 14:49:34"}
+{"status":"INFO","type":"Lookup","message":"Total Grabbed Unique URLS : 1","time":"2016-09-13 14:49:34"}
+{"status":"INFO","type":"Fillup","message":"Trying to find forms on : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-13 14:49:34"}
+{"status":"INFO","type":"Fillup","message":"Inspecting URL : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-13 14:49:34"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 2","time":"2016-09-13 14:49:38"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 5","time":"2016-09-13 14:49:38"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Not Found","time":"2016-09-13 14:49:38"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Not Found","time":"2016-09-13 14:49:38"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Not Found","time":"2016-09-13 14:49:38"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 0\/3 inputs passed","time":"2016-09-13 14:49:38"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 10","time":"2016-09-13 14:49:38"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Found","time":"2016-09-13 14:49:38"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Found","time":"2016-09-13 14:49:38"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Found","time":"2016-09-13 14:49:38"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 3\/3 inputs passed","time":"2016-09-13 14:49:38"}
+{"status":"INFO","type":"Fillup","message":"Valid Forms : 1\/2","time":"2016-09-13 14:49:38"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-13 15:07:21"}
+{"status":"INFO","type":"Lookup","message":"Trying Sitemap URI Variations","time":"2016-09-13 15:07:21"}
+{"status":"INFO","type":"Lookup","message":"Trying Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap.xml","time":"2016-09-13 15:07:21"}
+{"status":"OK","type":"Lookup","message":"Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap.xml Exist","time":"2016-09-13 15:07:39"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap.xml","time":"2016-09-13 15:07:45"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/post-sitemap.xml","time":"2016-09-13 15:07:47"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/post-sitemap.xml]: 1","time":"2016-09-13 15:07:47"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/page-sitemap.xml","time":"2016-09-13 15:07:51"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/page-sitemap.xml]: 1","time":"2016-09-13 15:08:03"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/w4pl-sitemap.xml","time":"2016-09-13 15:08:05"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/w4pl-sitemap.xml]: 1","time":"2016-09-13 15:08:05"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/category-sitemap.xml","time":"2016-09-13 15:08:07"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/category-sitemap.xml]: 1","time":"2016-09-13 15:08:07"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/sitemap.xml]: 1","time":"2016-09-13 15:08:07"}
+{"status":"INFO","type":"Lookup","message":"Total Grabbed Unique URLS : 1","time":"2016-09-13 15:08:07"}
+{"status":"INFO","type":"Fillup","message":"Trying to find forms on : Array","time":"2016-09-13 15:08:07"}
+{"status":"INFO","type":"Fillup","message":"Inspecting URL : Array","time":"2016-09-13 15:08:07"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 1","time":"2016-09-13 15:08:10"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 5","time":"2016-09-13 15:08:10"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Not Found","time":"2016-09-13 15:08:10"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Not Found","time":"2016-09-13 15:08:10"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Not Found","time":"2016-09-13 15:08:10"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 0\/3 inputs passed","time":"2016-09-13 15:08:10"}
+{"status":"INFO","type":"Fillup","message":"Valid Forms : 0\/1","time":"2016-09-13 15:08:10"}
+{"status":"INFO","type":"Lookup","message":"Trying Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap_index.xml","time":"2016-09-13 15:08:10"}
+{"status":"OK","type":"Lookup","message":"Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap_index.xml Exist","time":"2016-09-13 15:08:12"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap_index.xml","time":"2016-09-13 15:08:15"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/sitemap_index.xml]: 1","time":"2016-09-13 15:08:15"}
+{"status":"INFO","type":"Lookup","message":"Total Grabbed Unique URLS : 1","time":"2016-09-13 15:08:15"}
+{"status":"INFO","type":"Fillup","message":"Trying to find forms on : Array","time":"2016-09-13 15:08:15"}
+{"status":"INFO","type":"Fillup","message":"Inspecting URL : Array","time":"2016-09-13 15:08:15"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 1","time":"2016-09-13 15:08:17"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 5","time":"2016-09-13 15:08:17"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Not Found","time":"2016-09-13 15:08:17"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Not Found","time":"2016-09-13 15:08:17"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Not Found","time":"2016-09-13 15:08:17"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 0\/3 inputs passed","time":"2016-09-13 15:08:17"}
+{"status":"INFO","type":"Fillup","message":"Valid Forms : 0\/1","time":"2016-09-13 15:08:17"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-13 15:10:56"}
+{"status":"INFO","type":"Lookup","message":"Trying Sitemap URI Variations","time":"2016-09-13 15:10:56"}
+{"status":"INFO","type":"Lookup","message":"Trying Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap.xml","time":"2016-09-13 15:10:56"}
+{"status":"OK","type":"Lookup","message":"Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap.xml Exist","time":"2016-09-13 15:11:06"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap.xml","time":"2016-09-13 15:11:13"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/post-sitemap.xml","time":"2016-09-13 15:11:17"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/post-sitemap.xml]: 1","time":"2016-09-13 15:11:17"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/page-sitemap.xml","time":"2016-09-13 15:11:18"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/page-sitemap.xml]: 1","time":"2016-09-13 15:11:23"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/w4pl-sitemap.xml","time":"2016-09-13 15:11:24"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/w4pl-sitemap.xml]: 1","time":"2016-09-13 15:11:24"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/category-sitemap.xml","time":"2016-09-13 15:11:27"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/category-sitemap.xml]: 1","time":"2016-09-13 15:11:27"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/sitemap.xml]: 1","time":"2016-09-13 15:11:27"}
+{"status":"INFO","type":"Lookup","message":"Total Grabbed Unique URLS : 1","time":"2016-09-13 15:11:27"}
+{"status":"INFO","type":"Fillup","message":"Trying to find forms on : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-13 15:11:27"}
+{"status":"INFO","type":"Fillup","message":"Inspecting URL : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-13 15:11:27"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 2","time":"2016-09-13 15:11:31"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 5","time":"2016-09-13 15:11:31"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Not Found","time":"2016-09-13 15:11:31"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Not Found","time":"2016-09-13 15:11:31"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Not Found","time":"2016-09-13 15:11:31"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 0\/3 inputs passed","time":"2016-09-13 15:11:31"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 10","time":"2016-09-13 15:11:31"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Found","time":"2016-09-13 15:11:31"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Found","time":"2016-09-13 15:11:31"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Found","time":"2016-09-13 15:11:31"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 3\/3 inputs passed","time":"2016-09-13 15:11:31"}
+{"status":"INFO","type":"Fillup","message":"Valid Forms : 1\/2","time":"2016-09-13 15:11:31"}
+{"status":"INFO","type":"Lookup","message":"Trying Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap_index.xml","time":"2016-09-13 15:11:31"}
+{"status":"OK","type":"Lookup","message":"Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap_index.xml Exist","time":"2016-09-13 15:11:33"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap_index.xml","time":"2016-09-13 15:11:36"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/sitemap_index.xml]: 1","time":"2016-09-13 15:11:36"}
+{"status":"INFO","type":"Lookup","message":"Total Grabbed Unique URLS : 2","time":"2016-09-13 15:11:36"}
+{"status":"INFO","type":"Fillup","message":"Trying to find forms on : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-13 15:11:36"}
+{"status":"INFO","type":"Fillup","message":"Inspecting URL : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-13 15:11:36"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 2","time":"2016-09-13 15:11:40"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 5","time":"2016-09-13 15:11:40"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Not Found","time":"2016-09-13 15:11:40"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Not Found","time":"2016-09-13 15:11:40"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Not Found","time":"2016-09-13 15:11:40"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 0\/3 inputs passed","time":"2016-09-13 15:11:40"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 10","time":"2016-09-13 15:11:40"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Found","time":"2016-09-13 15:11:40"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Found","time":"2016-09-13 15:11:40"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Found","time":"2016-09-13 15:11:40"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 3\/3 inputs passed","time":"2016-09-13 15:11:40"}
+{"status":"INFO","type":"Fillup","message":"Valid Forms : 1\/2","time":"2016-09-13 15:11:40"}
+{"status":"INFO","type":"Fillup","message":"Trying to find forms on : ","time":"2016-09-13 15:11:40"}
+{"status":"INFO","type":"Fillup","message":"Inspecting URL : ","time":"2016-09-13 15:11:40"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 2","time":"2016-09-13 15:11:43"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 5","time":"2016-09-13 15:11:43"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Not Found","time":"2016-09-13 15:11:43"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Not Found","time":"2016-09-13 15:11:43"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Not Found","time":"2016-09-13 15:11:43"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 0\/3 inputs passed","time":"2016-09-13 15:11:43"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 10","time":"2016-09-13 15:11:43"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Found","time":"2016-09-13 15:11:43"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Found","time":"2016-09-13 15:11:43"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Found","time":"2016-09-13 15:11:43"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 3\/3 inputs passed","time":"2016-09-13 15:11:43"}
+{"status":"INFO","type":"Fillup","message":"Valid Forms : 1\/2","time":"2016-09-13 15:11:43"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-13 15:12:09"}
+{"status":"INFO","type":"Lookup","message":"Trying Sitemap URI Variations","time":"2016-09-13 15:12:09"}
+{"status":"INFO","type":"Lookup","message":"Trying Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap.xml","time":"2016-09-13 15:12:09"}
+{"status":"OK","type":"Lookup","message":"Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap.xml Exist","time":"2016-09-13 15:12:15"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap.xml","time":"2016-09-13 15:12:19"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/post-sitemap.xml","time":"2016-09-13 15:12:21"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/post-sitemap.xml]: 1","time":"2016-09-13 15:12:21"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/page-sitemap.xml","time":"2016-09-13 15:12:23"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/page-sitemap.xml]: 1","time":"2016-09-13 15:12:28"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/w4pl-sitemap.xml","time":"2016-09-13 15:12:31"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/w4pl-sitemap.xml]: 1","time":"2016-09-13 15:12:31"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/category-sitemap.xml","time":"2016-09-13 15:12:34"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/category-sitemap.xml]: 1","time":"2016-09-13 15:12:34"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/sitemap.xml]: 1","time":"2016-09-13 15:12:34"}
+{"status":"INFO","type":"Lookup","message":"Total Grabbed Unique URLS : 1","time":"2016-09-13 15:12:34"}
+{"status":"INFO","type":"Fillup","message":"Trying to find forms on : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-13 15:12:34"}
+{"status":"INFO","type":"Fillup","message":"Inspecting URL : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-13 15:12:34"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 2","time":"2016-09-13 15:12:39"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 5","time":"2016-09-13 15:12:39"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Not Found","time":"2016-09-13 15:12:39"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Not Found","time":"2016-09-13 15:12:39"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Not Found","time":"2016-09-13 15:12:39"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 0\/3 inputs passed","time":"2016-09-13 15:12:39"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 10","time":"2016-09-13 15:12:39"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Found","time":"2016-09-13 15:12:39"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Found","time":"2016-09-13 15:12:39"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Found","time":"2016-09-13 15:12:39"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 3\/3 inputs passed","time":"2016-09-13 15:12:39"}
+{"status":"INFO","type":"Fillup","message":"Valid Forms : 1\/2","time":"2016-09-13 15:12:39"}
+{"status":"INFO","type":"Lookup","message":"Trying Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap_index.xml","time":"2016-09-13 15:12:39"}
+{"status":"OK","type":"Lookup","message":"Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap_index.xml Exist","time":"2016-09-13 15:12:42"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap_index.xml","time":"2016-09-13 15:12:48"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/sitemap_index.xml]: 1","time":"2016-09-13 15:12:48"}
+{"status":"INFO","type":"Lookup","message":"Total Grabbed Unique URLS : 1","time":"2016-09-13 15:12:48"}
+{"status":"INFO","type":"Fillup","message":"Trying to find forms on : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-13 15:12:48"}
+{"status":"INFO","type":"Fillup","message":"Inspecting URL : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-13 15:12:48"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 2","time":"2016-09-13 15:12:55"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 5","time":"2016-09-13 15:12:55"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Not Found","time":"2016-09-13 15:12:55"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Not Found","time":"2016-09-13 15:12:55"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Not Found","time":"2016-09-13 15:12:55"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 0\/3 inputs passed","time":"2016-09-13 15:12:55"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 10","time":"2016-09-13 15:12:55"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Found","time":"2016-09-13 15:12:55"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Found","time":"2016-09-13 15:12:55"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Found","time":"2016-09-13 15:12:55"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 3\/3 inputs passed","time":"2016-09-13 15:12:55"}
+{"status":"INFO","type":"Fillup","message":"Valid Forms : 1\/2","time":"2016-09-13 15:12:55"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-13 15:16:13"}
+{"status":"INFO","type":"Lookup","message":"Trying Sitemap URI Variations","time":"2016-09-13 15:16:13"}
+{"status":"INFO","type":"Lookup","message":"Trying Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap.xml","time":"2016-09-13 15:16:13"}
+{"status":"OK","type":"Lookup","message":"Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap.xml Exist","time":"2016-09-13 15:16:17"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap.xml","time":"2016-09-13 15:16:22"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/post-sitemap.xml","time":"2016-09-13 15:16:26"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/post-sitemap.xml]: 1","time":"2016-09-13 15:16:26"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/page-sitemap.xml","time":"2016-09-13 15:16:30"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/page-sitemap.xml]: 1","time":"2016-09-13 15:16:38"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/w4pl-sitemap.xml","time":"2016-09-13 15:16:41"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/w4pl-sitemap.xml]: 1","time":"2016-09-13 15:16:41"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/category-sitemap.xml","time":"2016-09-13 15:16:45"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/category-sitemap.xml]: 1","time":"2016-09-13 15:16:45"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/sitemap.xml]: 1","time":"2016-09-13 15:16:45"}
+{"status":"INFO","type":"Lookup","message":"Total Grabbed Unique URLS : 1","time":"2016-09-13 15:16:45"}
+{"status":"INFO","type":"Fillup","message":"Trying to find forms on : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-13 15:16:45"}
+{"status":"INFO","type":"Fillup","message":"Inspecting URL : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-13 15:16:45"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 2","time":"2016-09-13 15:16:50"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 5","time":"2016-09-13 15:16:50"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Not Found","time":"2016-09-13 15:16:50"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Not Found","time":"2016-09-13 15:16:50"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Not Found","time":"2016-09-13 15:16:50"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 0\/3 inputs passed","time":"2016-09-13 15:16:50"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 10","time":"2016-09-13 15:16:50"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Found","time":"2016-09-13 15:16:50"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Found","time":"2016-09-13 15:16:50"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Found","time":"2016-09-13 15:16:50"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 3\/3 inputs passed","time":"2016-09-13 15:16:50"}
+{"status":"INFO","type":"Fillup","message":"Valid Forms : 1\/2","time":"2016-09-13 15:16:50"}
+{"status":"INFO","type":"Lookup","message":"Trying Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap_index.xml","time":"2016-09-13 15:16:50"}
+{"status":"OK","type":"Lookup","message":"Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap_index.xml Exist","time":"2016-09-13 15:16:52"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap_index.xml","time":"2016-09-13 15:16:58"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/sitemap_index.xml]: 1","time":"2016-09-13 15:16:58"}
+{"status":"INFO","type":"Lookup","message":"Total Grabbed Unique URLS : 1","time":"2016-09-13 15:16:58"}
+{"status":"INFO","type":"Fillup","message":"Trying to find forms on : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-13 15:16:58"}
+{"status":"INFO","type":"Fillup","message":"Inspecting URL : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-13 15:16:58"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 2","time":"2016-09-13 15:17:02"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 5","time":"2016-09-13 15:17:02"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Not Found","time":"2016-09-13 15:17:02"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Not Found","time":"2016-09-13 15:17:02"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Not Found","time":"2016-09-13 15:17:02"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 0\/3 inputs passed","time":"2016-09-13 15:17:02"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 10","time":"2016-09-13 15:17:02"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Found","time":"2016-09-13 15:17:02"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Found","time":"2016-09-13 15:17:02"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Found","time":"2016-09-13 15:17:02"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 3\/3 inputs passed","time":"2016-09-13 15:17:02"}
+{"status":"INFO","type":"Fillup","message":"Valid Forms : 1\/2","time":"2016-09-13 15:17:02"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-13 15:37:39"}
+{"status":"INFO","type":"Lookup","message":"Trying Sitemap URI Variations","time":"2016-09-13 15:37:39"}
+{"status":"INFO","type":"Lookup","message":"Trying Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap.xml","time":"2016-09-13 15:37:39"}
+{"status":"OK","type":"Lookup","message":"Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap.xml Exist","time":"2016-09-13 15:38:07"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap.xml","time":"2016-09-13 15:38:24"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/post-sitemap.xml","time":"2016-09-13 15:38:27"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/post-sitemap.xml]: 1","time":"2016-09-13 15:38:27"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/page-sitemap.xml","time":"2016-09-13 15:38:40"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/page-sitemap.xml]: 1","time":"2016-09-13 15:39:15"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/w4pl-sitemap.xml","time":"2016-09-13 15:39:23"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/w4pl-sitemap.xml]: 1","time":"2016-09-13 15:39:23"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/category-sitemap.xml","time":"2016-09-13 15:39:32"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/category-sitemap.xml]: 1","time":"2016-09-13 15:39:32"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/sitemap.xml]: 1","time":"2016-09-13 15:39:32"}
+{"status":"INFO","type":"Lookup","message":"Total Grabbed Unique URLS : 1","time":"2016-09-13 15:39:32"}
+{"status":"INFO","type":"Fillup","message":"Trying to find forms on : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-13 15:39:32"}
+{"status":"INFO","type":"Fillup","message":"Inspecting URL : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-13 15:39:32"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 2","time":"2016-09-13 15:39:40"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 5","time":"2016-09-13 15:39:40"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Not Found","time":"2016-09-13 15:39:40"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Not Found","time":"2016-09-13 15:39:40"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Not Found","time":"2016-09-13 15:39:40"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 0\/3 inputs passed","time":"2016-09-13 15:39:40"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 10","time":"2016-09-13 15:39:40"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Found","time":"2016-09-13 15:39:40"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Found","time":"2016-09-13 15:39:40"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Found","time":"2016-09-13 15:39:40"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 3\/3 inputs passed","time":"2016-09-13 15:39:40"}
+{"status":"INFO","type":"Fillup","message":"Valid Forms : 1\/2","time":"2016-09-13 15:39:40"}
+{"status":"INFO","type":"Lookup","message":"Trying Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap_index.xml","time":"2016-09-13 15:39:40"}
+{"status":"OK","type":"Lookup","message":"Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap_index.xml Exist","time":"2016-09-13 15:39:47"}
+{"status":"INFO","type":"Lookup","message":"Parsing Sitemap URI : https:\/\/www.flyskyjetair.com\/sitemap_index.xml","time":"2016-09-13 15:40:00"}
+{"status":"INFO","type":"Lookup","message":"Grabbed URLS on [https:\/\/www.flyskyjetair.com\/sitemap_index.xml]: 1","time":"2016-09-13 15:40:00"}
+{"status":"INFO","type":"Lookup","message":"Total Grabbed Unique URLS : 1","time":"2016-09-13 15:40:00"}
+{"status":"INFO","type":"Fillup","message":"Trying to find forms on : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-13 15:40:00"}
+{"status":"INFO","type":"Fillup","message":"Inspecting URL : https:\/\/www.flyskyjetair.com\/contact-us-2\/","time":"2016-09-13 15:40:00"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 2","time":"2016-09-13 15:40:28"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 5","time":"2016-09-13 15:40:28"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Not Found","time":"2016-09-13 15:40:28"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Not Found","time":"2016-09-13 15:40:28"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Not Found","time":"2016-09-13 15:40:28"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 0\/3 inputs passed","time":"2016-09-13 15:40:28"}
+{"status":"OK","type":"Fillup","message":"Inputs inside form : 10","time":"2016-09-13 15:40:28"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"name\"] Found","time":"2016-09-13 15:40:28"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"email\"] Found","time":"2016-09-13 15:40:28"}
+{"status":"OK","type":"Fillup","message":"Looking for Field : [name*=\"message\"] Found","time":"2016-09-13 15:40:28"}
+{"status":"OK","type":"Fillup","message":"Possible Forms found : 3\/3 inputs passed","time":"2016-09-13 15:40:28"}
+{"status":"INFO","type":"Fillup","message":"Valid Forms : 1\/2","time":"2016-09-13 15:40:28"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-13 15:42:18"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-13 15:42:25"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-13 15:42:26"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-13 15:42:28"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-13 15:42:30"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-13 15:42:32"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-13 15:42:38"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-13 15:42:39"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-13 15:42:45"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-13 15:42:46"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-13 15:42:47"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-13 15:42:51"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-13 15:42:53"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-13 15:42:55"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-13 15:42:57"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-13 15:42:58"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-13 15:43:01"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-13 15:43:08"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-13 15:43:10"}
+{"status":"OK","type":"Browser","message":"Start","time":"2016-09-13 15:43:16"}
