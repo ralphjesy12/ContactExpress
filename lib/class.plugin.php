@@ -18,6 +18,12 @@ if(!class_exists('CONTACTXP')){
                     'type' => 'textarea',
                     'required' => true
                 ],
+                'response_categories' => [
+                    'label' => 'Response Categories',
+                    'description' => 'Select the categories of the response groups you wish to use',
+                    'type' => 'categorycheckbox',
+                    'required' => true
+                ],
             ],
             'contact_pages' => [
                 'contact_links' => [
@@ -25,6 +31,44 @@ if(!class_exists('CONTACTXP')){
                     'description' => 'List of pages found as possible contact forms',
                     'type' => 'page-tables',
                 ]
+            ],
+            'response_fields' => [
+                'firstname' => [
+                    'label' => 'First Name',
+                    'description' => '',
+                    'type' => 'text',
+                    'required' => true
+                ],
+                'lastname' => [
+                    'label' => 'Last Name',
+                    'description' => '',
+                    'type' => 'text',
+                    'required' => true
+                ],
+                'company' => [
+                    'label' => 'Company Name',
+                    'description' => '',
+                    'type' => 'text',
+                    'required' => false
+                ],
+                'phone' => [
+                    'label' => 'Phone Number',
+                    'description' => '',
+                    'type' => 'text',
+                    'required' => false
+                ],
+                'email' => [
+                    'label' => 'Email Address',
+                    'description' => '',
+                    'type' => 'text',
+                    'required' => false
+                ],
+                'message' => [
+                    'label' => 'Message',
+                    'description' => '',
+                    'type' => 'textarea',
+                    'required' => false
+                ],
             ]
         ];
 
@@ -35,27 +79,21 @@ if(!class_exists('CONTACTXP')){
         }
 
         public function init(){
-            add_action('admin_menu',function(){
-                add_menu_page( 'Contact Xpress', 'Contact Xpress', 'manage_options', 'contact-xp', [&$this,'menu_admin_view'], 'dashicons-sos', 66);
-                add_submenu_page( 'contact-xp' , 'Domain List' , 'Domain List' , 'manage_options' , 'cxp-domain-list', [&$this, 'menu_domain_list_view']);
-            });
-
-            $labels = array(
-                'name' => 'Domain',
-                'singular_name' => 'Domain',
-                'add_new' => 'Add Domain',
-                'all_items' => 'All Domains',
-                'add_new_item' => 'Add Domain',
-                'edit_item' => 'Edit Domain',
-                'new_item' => 'New Domain',
-                'view_item' => 'View Domain',
-                'search_items' => 'Search Domains',
-                'not_found' => 'No domains found',
-                'not_found_in_trash' => 'No domains found in trash',
-                'parent_item_colon' => 'Parent domain'
-            );
-            $args = array(
-                'labels' => $labels,
+            register_post_type( 'domain', array(
+                'labels' => array(
+                    'name' => 'Domain',
+                    'singular_name' => 'Domain',
+                    'add_new' => 'Add Domain',
+                    'all_items' => 'All Domains',
+                    'add_new_item' => 'Add Domain',
+                    'edit_item' => 'Edit Domain',
+                    'new_item' => 'New Domain',
+                    'view_item' => 'View Domain',
+                    'search_items' => 'Search Domains',
+                    'not_found' => 'No domains found',
+                    'not_found_in_trash' => 'No domains found in trash',
+                    'parent_item_colon' => 'Parent domain'
+                ),
                 'public' => true,
                 'has_archive' => false,
                 'publicly_queryable' => false,
@@ -65,16 +103,6 @@ if(!class_exists('CONTACTXP')){
                 'hierarchical' => false,
                 'supports' => array(
                     'title',
-                    // 'editor',
-                    // 'excerpt',
-                    // 'thumbnail',
-                    //'author',
-                    //'trackbacks',
-                    // 'custom-fields',
-                    //'comments',
-                    // 'revisions',
-                    //'page-attributes', // (menu order, hierarchical must be true to show Parent option)
-                    //'post-formats',
                 ),
                 'taxonomies' => array( 'category' ), // add default post categories and tags
                 'menu_position' => 5,
@@ -84,82 +112,139 @@ if(!class_exists('CONTACTXP')){
                     add_meta_box( 'contact_pages_metabox', 'Contact Form Pages', [&$this,'show_meta_box_contact_pages'], 'domain', 'normal','high',['group'=>'contact_pages']);
 
                 }
-            );
-            register_post_type( 'domain', $args );
-            add_action( 'save_post_domain', [ &$this , 'save_meta_box' ]);
-        }
-        public function show_meta_box($post,$meta){
-            $rss_data  = [];
-            foreach ($this->option_fields[$meta['args']['group']] as $field => $data) {
-                $this->option_fields[$meta['args']['group']][$field]['value'] = get_post_meta( $post->ID, $field, true );
-            }
-            wp_nonce_field( basename( __FILE__ ), '_'.$meta['args']['group'].'_metabox_nonce' );
-            include_once( CONTACTXP_PLUGIN_DIR . 'partials/metabox_'.$meta['args']['group'].'.php');
-        }
+            ));
 
-        public function show_meta_box_contact_pages($post,$meta){
-            $rss_data  = [];
-            foreach ($this->option_fields[$meta['args']['group']] as $field => $data) {
-                $this->option_fields[$meta['args']['group']][$field]['value'] = get_post_meta( $post->ID, $field, true );
+            register_post_type( 'response', array(
+                'labels' => array(
+                    'name' => 'Response',
+                    'singular_name' => 'Response',
+                    'add_new' => 'Add Response',
+                    'all_items' => 'All Responses',
+                    'add_new_item' => 'Add Response',
+                    'edit_item' => 'Edit Response',
+                    'new_item' => 'New Response',
+                    'view_item' => 'View Response',
+                    'search_items' => 'Search Responses',
+                    'not_found' => 'No Responses found',
+                    'not_found_in_trash' => 'No Responses found in trash',
+                    'parent_item_colon' => 'Parent Response'
+                ),
+                'public' => true,
+                'has_archive' => false,
+                'publicly_queryable' => false,
+                'query_var' => false,
+                'rewrite' => true,
+                'capability_type' => 'post',
+                'hierarchical' => false,
+                'supports' => array(
+                    'title',
+                ),
+                'taxonomies' => array( 'response_categories' ), // add default post categories and tags
+                'menu_position' => 5,
+                'exclude_from_search' => true,
+                'register_meta_box_cb' => function(){
+                    add_meta_box( 'domain_metabox', 'Response Fields', [&$this,'show_meta_box'], 'response', 'normal','high',['group'=>'response_fields']);
+                }
+            ));
+
+            register_taxonomy( 'response_categories', array( 'response' ), array(
+                'hierarchical'      => true, // Set this to 'false' for non-hierarchical taxonomy (like tags)
+                'labels'            => array(
+                    'name'              => _x( 'Response Categories', 'taxonomy general name' ),
+                    'singular_name'     => _x( 'Response Category', 'taxonomy singular name' ),
+                    'search_items'      => __( 'Search Response Categories' ),
+                    'all_items'         => __( 'All Response Categories' ),
+                    'parent_item'       => __( 'Parent Response Category' ),
+                    'parent_item_colon' => __( 'Parent Response Category:' ),
+                    'edit_item'         => __( 'Edit Response Category' ),
+                    'update_item'       => __( 'Update Response Category' ),
+                    'add_new_item'      => __( 'Add New Response Category' ),
+                    'new_item_name'     => __( 'New Response Category Name' ),
+                    'menu_name'         => __( 'Response Categories' ),
+                ),
+                'show_ui'           => true,
+                'show_admin_column' => true,
+                'query_var'         => true,
+                'rewrite'           => array( 'slug' => 'categories' ),
+                ) );
+
+                add_action( 'save_post_domain', [ &$this , 'save_meta_box' ]);
+                add_action( 'save_post_response', [ &$this , 'save_meta_box' ]);
             }
-            include_once( CONTACTXP_PLUGIN_DIR . 'partials/metabox_'.$meta['args']['group'].'.php');
-        }
-        public function save_meta_box(){
-            global $post;
-            if(empty($post) || !isset($post->ID)){
-                return;
+            public function show_meta_box($post,$meta){
+                $rss_data  = [];
+                foreach ($this->option_fields[$meta['args']['group']] as $field => $data) {
+                    $this->option_fields[$meta['args']['group']][$field]['value'] = get_post_meta( $post->ID, $field, true );
+                }
+                wp_nonce_field( basename( __FILE__ ), '_'.$meta['args']['group'].'_metabox_nonce' );
+                include_once( CONTACTXP_PLUGIN_DIR . 'partials/metabox_'.$meta['args']['group'].'.php');
             }
 
-            if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ){
-                return;
+            public function show_meta_box_contact_pages($post,$meta){
+                $rss_data  = [];
+                foreach ($this->option_fields[$meta['args']['group']] as $field => $data) {
+                    $this->option_fields[$meta['args']['group']][$field]['value'] = get_post_meta( $post->ID, $field, true );
+                }
+                include_once( CONTACTXP_PLUGIN_DIR . 'partials/metabox_'.$meta['args']['group'].'.php');
             }
-            if( ! current_user_can( 'edit_post', $post->ID ) ){
-                return;
-            }
-            foreach ($this->option_fields as $group => $fields) {
-                if( !isset( $_POST['_'.$group.'_metabox_nonce'] ) || !wp_verify_nonce( $_POST['_'.$group.'_metabox_nonce'], basename( __FILE__ ) ) ){
+            public function save_meta_box(){
+                global $post;
+                if(empty($post) || !isset($post->ID)){
                     return;
                 }
 
-                foreach ($fields as $key => $data) {
-                    $this->save_meta_value($post->ID,$key,stripslashes_deep($_POST[$key]));
+                if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ){
+                    return;
+                }
+                if( ! current_user_can( 'edit_post', $post->ID ) ){
+                    return;
+                }
+                foreach ($this->option_fields as $group => $fields) {
+                    if( !isset( $_POST['_'.$group.'_metabox_nonce'] ) || !wp_verify_nonce( $_POST['_'.$group.'_metabox_nonce'], basename( __FILE__ ) ) ){
+                        continue;
+                    }
+
+                    foreach ($fields as $key => $data) {
+                        if(!empty($_POST[$key])){
+                            $this->save_meta_value($post->ID,$key,stripslashes_deep($_POST[$key]));
+                        }
+                    }
                 }
             }
-        }
-        public function save_meta_value($id,$meta_id = '',$value = ''){
-            if(!empty($meta_id)){
-                if( isset( $value ) ){
-                    update_post_meta( $id , $meta_id , $value );
-                }else{
-                    delete_post_meta( $id , $meta_id  );
+            public function save_meta_value($id,$meta_id = '',$value = ''){
+                if(!empty($meta_id)){
+                    if( isset( $value ) ){
+                        update_post_meta( $id , $meta_id , $value );
+                    }else{
+                        delete_post_meta( $id , $meta_id  );
+                    }
                 }
             }
-        }
 
-        public function domain_metabox(){
-            include CONTACTXP_PLUGIN_DIR . 'partials/menu-domain-settings.php';
-        }
+            public function domain_metabox(){
+                include CONTACTXP_PLUGIN_DIR . 'partials/menu-domain-settings.php';
+            }
 
-        public function admin_init(){
+            public function admin_init(){
 
-        }
+            }
 
-        public function menu_admin_view(){
-            require_once CONTACTXP_PLUGIN_DIR . 'partials/menu-admin-view.php';
-        }
+            public function menu_admin_view(){
+                require_once CONTACTXP_PLUGIN_DIR . 'partials/menu-admin-view.php';
+            }
 
-        public function menu_domain_list_view(){
-            require_once CONTACTXP_PLUGIN_DIR . 'partials/menu-domain-list-view.php';
-        }
+            public function menu_domain_list_view(){
+                require_once CONTACTXP_PLUGIN_DIR . 'partials/menu-domain-list-view.php';
+            }
 
-        public static function activate(){
+            public static function activate(){
 
-        }
+            }
 
-        public static function deactivate(){
+            public static function deactivate(){
+
+            }
 
         }
 
     }
-
-}

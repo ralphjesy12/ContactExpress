@@ -256,30 +256,91 @@ if(!class_exists('ContactXpress')){
 
         }
 
-        function fill(){
-            $this->logger('Browser','Filling Up Form : Start',1);
-            $this->browser->visit($this->url);
+        function fill($data = []){
+            $url = $this->url;
+            if(empty($data) || empty($url)) return false;
+
+            $this->logger('Fillup','Inspecting URL : '.$url,2);
+            $this->browser->visit($url);
             $this->page = $this->browser->getPage();
+            $formshere = $this->page->findAll('xpath', '//form');
+            if(count($formshere)){
+                $this->logger('Fillup','Possible Forms found : '.count($formshere),1);
+                $validForms = 0;
+                foreach ($formshere as $form) {
+                    $numInput = count($form->findAll('css','input'));
+                    $this->logger('Fillup','Inputs inside form : '.$numInput,1);
+                    $inputsRequiredToValidate = [
+                        'name',
+                        'email',
+                        'message',
+                    ];
+                    $found = 0;
+                    foreach ($inputsRequiredToValidate as $input) {
 
-            $this->logger('Browser','Filling Up Form : Name',1);
-            $namefield = $this->page->find('named', array('id_or_name',  $this->browser->getSelectorsHandler()->xpathLiteral('your-name')));
-            $namefield->setValue('Judy Anne');
+                        // For Case Insensitivity
+                        $input = strtolower($input);
+                        $totalFound = (
+                        count($form->findAll('css','[name*="'.$input.'"]')) + // name
+                        count($form->findAll('css','[name*="'.ucfirst($input).'"]')) + // Name
+                        count($form->findAll('css','[name*="'.strtoupper($input).'"]'))); // NAME
 
-            $this->logger('Browser','Filling Up Form : Email',1);
-            $emailfield = $this->page->find('named', array('id_or_name',  $this->browser->getSelectorsHandler()->xpathLiteral('your-email')));
-            $emailfield->setValue('judyanne@gmail.com');
+                        if($totalFound){
+                            $this->logger('Fillup','Looking for Field : '.'[name*="'.$input.'"] Found'.'',1);
+                            $found++;
+                        }else{
+                            $this->logger('Fillup','Looking for Field : '.'[name*="'.$input.'"] Not Found'.'',1);
+                        }
+                    }
 
-            $this->logger('Browser','Filling Up Form : Subject',1);
-            $subj = $this->page->find('named', array('id_or_name',  $this->browser->getSelectorsHandler()->xpathLiteral('your-subject')));
-            $subj->setValue('General Inquiry');
+                    if($found){
+                        $validForms++;
 
-            $this->logger('Browser','Filling Up Form : Message',1);
-            $subj = $this->page->find('named', array('id_or_name',  $this->browser->getSelectorsHandler()->xpathLiteral('your-message')));
-            $subj->setValue('Yow!');
+                        if(!empty($data)){
+                            $this->logger('Browser','Filling Up Form : Start',1);
 
-            $this->logger('Browser','Submitting Form',1);
-            $form = $this->page->find('css', '.wpcf7-form');
-            $form->submit();
+                            foreach ([
+                                'firstname' => 'first',
+                                'lastname' => 'last',
+                                'company' => 'company',
+                                'phone' => 'phone',
+                                'email' => 'email',
+                                'message' => 'message',
+                                ] as $key => $input) :
+                                if(!empty($data[$key])){
+                                    foreach ([
+                                        '[name*="'.$input.'"]',
+                                        '[name*="'.ucfirst($input).'"]',
+                                        '[name*="'.strtoupper($input).'"]'
+                                        ] as $css):
+                                        $namefield = $form->findAll('css','[name*="'.$input.'"]');
+                                        if(count($namefield)){
+                                            $namefield->setValue($data[$key]);
+                                        }
+                                    endforeach;
+                                    $this->logger('Browser','Filling Up Form : '.$key,1);
+                                }
+                            endforeach;
+
+                            $this->logger('Browser','Submitting Form',1);
+                            $form->submit();
+                        }
+                    }
+
+                    $this->logger('Fillup','Possible Forms found : '.$found.'/'.count($inputsRequiredToValidate).' inputs passed',1);
+
+                }
+                $this->urls[$key]['forms'] = [
+                    'found' => count($formshere),
+                    'valid' => $validForms
+                ];
+                $this->logger('Fillup','Valid Forms : '.$validForms.'/'.count($formshere),2);
+            }else{
+                $this->logger('Fillup','No Forms found',0);
+            }
+
+
+
 
         }
 
