@@ -42,6 +42,7 @@
 </table>
 <a href="<?=add_query_arg([ 'cxp_action' => 'scan_domain' ])?>" class="button">Scan Domain</a>
 <a href="<?=add_query_arg([ 'cxp_action' => 'send_responses' ])?>" class="button">Send Responses</a>
+<a href="#" class="button export-log">Export Logs</a>
 <?php
 if(isset($_GET['cxp_action'])):
     switch ($_GET['cxp_action']) {
@@ -57,14 +58,15 @@ if(isset($_GET['cxp_action'])):
             if(!empty($keywords)){
                 $contactform->variations['contact'] = explode(',',$this->option_fields['domain_settings']['page_url_keywords']['value']);
             }
+            $contactform->getAllUrlsFromPage($site);
             $contactform->formLookUp();
             if(count($contactform->urls)){
                 update_post_meta( $post->ID , 'contact_links' , $contactform->urls );
             }
             ?>
-            <script>window.location.assign(<?=("'".add_query_arg([
-                'cxp_action' => 'scan_domain_success'
-            ])."'")?>)</script>
+            <!-- <script>window.location.assign(<?=("'".add_query_arg([
+            'cxp_action' => 'scan_domain_success'
+            ])."'")?>)</script> -->
             <?php
         }
 
@@ -99,6 +101,7 @@ if(isset($_GET['cxp_action'])):
                     $data = [];
                     foreach ($responses as $response) {
                         $d = [];
+                        $d['id'] = $response->ID;
                         $d['firstname'] = get_post_meta($response->ID,'firstname',true);
                         $d['lastname'] = get_post_meta($response->ID,'lastname',true);
                         $d['company'] = get_post_meta($response->ID,'company',true);
@@ -112,6 +115,7 @@ if(isset($_GET['cxp_action'])):
                         $contactform = new ContactXpress($url['url']);
                         foreach ($data as $d) {
                             $contactform->fill($d);
+                            $contactform->saveRecord($post->ID);
                         }
                     }
 
@@ -156,3 +160,33 @@ if(isset($_GET['cxp_action'])):
 
 endif;
 ?>
+
+<script>
+jQuery(function($){
+
+    $('.export-log').on('click',function(e){
+        e.preventDefault();
+        $.ajax({
+            url: '<?=admin_url('admin-ajax.php')?>' ,
+            data: {
+                post : '<?=$_GET['post']?>',
+                action : 'export_contact_grab_logs'
+            },
+            tryCount : 0,
+            retryLimit : 5,
+            timeout: 25000,
+            type: 'POST',
+            error: function(x, t, m) {
+
+            },
+            success: function(data){
+                var retReq = jQuery.parseJSON(data);
+                //$('#message').html(data);
+                console.log(location.href = retReq.url);
+                //alert(data);
+                return;
+            }
+        });
+    });
+});
+</script>

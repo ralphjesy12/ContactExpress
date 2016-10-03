@@ -2,6 +2,7 @@
     "require": {
         "behat/mink": "^1.7",
         "behat/mink-goutte-driver": "^1.2",
-        "behat/mink-browserkit-driver": "^1.3"
+        "behat/mink-browserkit-driver": "^1.3",
+        "microweber/screen": "^1.0"
     }
 }

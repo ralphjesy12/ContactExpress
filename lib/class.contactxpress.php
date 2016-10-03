@@ -9,6 +9,10 @@ if(!class_exists('ContactXpress')){
         public $page;
         public $log;
         public $logname;
+        public $scanlog;
+        public $scanStart;
+        public $scanEnd;
+        public $scanStatus = [];
         public $variations = [
             'sitemap' => [
                 'sitemap.xml',
@@ -70,6 +74,59 @@ if(!class_exists('ContactXpress')){
             $browser->visit($uri);
             $page = $browser->getPage();
             return $page->find('css','title')->getText();
+        }
+
+        function getAllUrlsFromPage($uri){
+            $this->logger('Lookup','Parsing Sitemap URI : '.$uri,2);
+            $urls = [];
+            $driver = new \Behat\Mink\Driver\GoutteDriver();
+            $browser = new \Behat\Mink\Session($driver);
+            $browser->start();
+            $browser->visit($uri);
+            $page = $browser->getPage();
+
+            $urlshere = $page->findAll('xpath', '//a');
+            $this->logger('Lookup','URLS Found : '.count($urlshere),1);
+
+            if(count($urlshere)){
+                foreach ($urlshere as $url) {
+                    $urlhere = $url->getAttribute('href');
+                    if(!empty($urlhere)){
+                        $urls[] = $urlhere;
+                    }
+                }
+            }
+
+            $this->logger('Lookup','URLS Found : '.count($urls),1);
+            $urlsbefore = count($this->urls);
+            foreach ($urls as $key => $url) {
+
+                // Add Only URLS that are similar to what we are looking for
+                foreach ($this->variations['contact'] as $str) {
+                    if(strpos($url, $str)!==false){
+
+                        $hashkey = hash('crc32b',$url);
+                        if(empty($this->urls[$hashkey])){
+                            $this->urls[$hashkey] = [
+                                'url' => $url,
+                                'title' => $this->getPageTitle($url)
+                            ];
+                        }
+                        break;
+                    }
+                }
+            }
+
+            $urlsnow = count($this->urls);
+            $this->logger('Lookup','URLS Valid : '.($urlsnow - $urlsbefore),1);
+
+
+            foreach ($this->urls as $k => $formurl) {
+                $this->logger('Fillup','Trying to find forms on : '.$formurl['url'],2);
+                $this->findForm($formurl['url'],hash('crc32b',$formurl['url']));
+            }
+
+            return;
         }
 
         function getAllUrlsFromSitemap($uri){
@@ -202,16 +259,38 @@ if(!class_exists('ContactXpress')){
 
         }
 
+        function saveRecord($id){
+            add_post_meta($id,'record_entry',[
+                'started' => $this->scanStart,
+                'ended' => $this->scanEnd,
+                'log' => $this->scanlog,
+                'status' => $this->scanStatus
+            ]);
+        }
+
+        function addScanRecord($type,$desc,$status = 2){
+            $this->scanlog[] = [
+                'time' => date("Y-m-d H:i:s"),
+                'type' => $type,
+                'desc' => $desc,
+                'status' => $status
+            ];
+        }
+
         function findForm($url,$key = 0){
+            $this->scanlog = [];
             // echo '<pre>';
             $this->logger('Fillup','Inspecting URL : '.$url,2);
+            $this->addScanRecord('Start','Visiting URL : '.$url);
             $this->browser->visit($url);
             $this->page = $this->browser->getPage();
             $formshere = $this->page->findAll('xpath', '//form');
             if(count($formshere)){
                 $this->logger('Fillup','Possible Forms found : '.count($formshere),1);
+                $this->addScanRecord('Scan','Forms found : '.count($formshere),1);
                 $validForms = 0;
-                foreach ($formshere as $form) {
+                foreach ($formshere as $k => $form) {
+                    $this->addScanRecord('Input','Filling up form #'.($k+1));
                     $numInput = count($form->findAll('css','input'));
                     $this->logger('Fillup','Inputs inside form : '.$numInput,1);
                     $inputsRequiredToValidate = [
@@ -251,23 +330,77 @@ if(!class_exists('ContactXpress')){
                 $this->logger('Fillup','Valid Forms : '.$validForms.'/'.count($formshere),2);
             }else{
                 $this->logger('Fillup','No Forms found',0);
+                $this->addScanRecord('End','No forms found.',0);
             }
             // echo '</pre>';
 
         }
 
+        function saveScreenShot($type){
+            return;
+            $screenshotfolder = 'CXPScreenshots';
+            $extension = '.png';
+            $filename = sanitize_title($type);
+            if(empty($filename)){
+                $filename = 'screenshot-';
+            }
+            $filename .= '-' . date('Y-m-d_H-i-s') . $extension;
+
+            $this->logger('Screenshot','Saving screenshot to '.$filename,2);
+
+            $upload_dir = wp_upload_dir();
+            $uploadScreenshots = $upload_dir['basedir'].'/'.$screenshotfolder;
+            if ( ! file_exists( $uploadScreenshots ) )
+            {
+                if ( ! (wp_mkdir_p( $uploadScreenshots ) === TRUE) )
+                {
+                    // Unable to Make Default screenshot Folder
+                    $this->logger('Screenshot','Unable to create Screenshot Directory '.$uploadScreenshots,0);
+                    return false;
+                }
+            }
+
+            $uploadScreenshotsfile = $uploadScreenshots . '/' . $filename;
+            // Save Screenshot
+            // $screenshot = $this->browser->getDriver()->getScreenshot();
+            $screenCapture = new \Screen\Capture();
+            $screenCapture->setUrl($this->browser->getCurrentUrl());
+            $screenCapture->setWidth(1200);
+            $screenCapture->setHeight(800);
+            $screenCapture->setClipWidth(1200);
+            $screenCapture->setClipHeight(800);
+            $screenCapture->setBackgroundColor('#ffffff');
+            $screenCapture->setImageType('png');
+            $screenCapture->save($uploadScreenshotsfile);
+
+            if(file_exists( $uploadScreenshotsfile )===FALSE){
+                // Unable to write screenshot to file
+                $this->logger('Screenshot','Unable to write screenshot to file'.$filename,0);
+                return false;
+            }
+            return true;
+        }
+
         function fill($data = []){
             $url = $this->url;
+            $this->scanlog = [];
+            $this->scanStart = null;
+            $this->scanEnd = null;
+            $this->scanStatus = [];
+            $this->scanStart = date("Y-m-d H:i:s");
             if(empty($data) || empty($url)) return false;
 
+            $this->addScanRecord('Start','Visiting URL : '.$url);
             $this->logger('Fillup','Inspecting URL : '.$url,2);
             $this->browser->visit($url);
             $this->page = $this->browser->getPage();
             $formshere = $this->page->findAll('xpath', '//form');
             if(count($formshere)){
+
                 $this->logger('Fillup','Possible Forms found : '.count($formshere),1);
+                $this->addScanRecord('Fillup','Possible Forms found : '.count($formshere),1);
                 $validForms = 0;
-                foreach ($formshere as $form) {
+                foreach ($formshere as $k=>$form) {
                     $numInput = count($form->findAll('css','input'));
                     $this->logger('Fillup','Inputs inside form : '.$numInput,1);
                     $inputsRequiredToValidate = [
@@ -276,6 +409,7 @@ if(!class_exists('ContactXpress')){
                         'message',
                     ];
                     $found = 0;
+                    $this->addScanRecord('Fillup','Checking Form # '.($k+1));
                     foreach ($inputsRequiredToValidate as $input) {
 
                         // For Case Insensitivity
@@ -297,8 +431,10 @@ if(!class_exists('ContactXpress')){
                         $validForms++;
 
                         if(!empty($data)){
+                            $this->addScanRecord('Fillup','Filling up Form # '.($k+1).' using response template id : '.$data['id']);
                             $this->logger('Browser','Filling Up Form : Start',1);
-
+                            // Save Screenshot before filling up form
+                            $this->saveScreenShot('1-before-fillup');
                             foreach ([
                                 'firstname' => 'first',
                                 'lastname' => 'last',
@@ -306,6 +442,7 @@ if(!class_exists('ContactXpress')){
                                 'phone' => 'phone',
                                 'email' => 'email',
                                 'message' => 'message',
+                                'subject' => 'subject',
                                 ] as $key => $input) :
                                 if(!empty($data[$key])){
                                     foreach ([
@@ -315,32 +452,53 @@ if(!class_exists('ContactXpress')){
                                         ] as $css):
                                         $namefield = $form->findAll('css','[name*="'.$input.'"]');
                                         if(count($namefield)){
-                                            $namefield->setValue($data[$key]);
+                                            foreach ($namefield as $kk => $name) {
+                                                $name->setValue($data[$key]);
+                                            }
                                         }
                                     endforeach;
                                     $this->logger('Browser','Filling Up Form : '.$key,1);
                                 }
                             endforeach;
 
+                            // Save Screenshot after filling up form
+                            $this->saveScreenShot('2-after-fillup');
                             $this->logger('Browser','Submitting Form',1);
                             $form->submit();
+
+                            $this->addScanRecord('Submit','Form # '.($k+1).' has been submitted');
+                            // Save Screenshot after submission
+                            $this->saveScreenShot('3-after-submit');
+
+                            $this->scanStatus[] = [
+                                'time' => date("Y-m-d H:i:s"),
+                                'url' => $this->url,
+                                'current' => $this->browser->getCurrentUrl(),
+                                'title' => $this->browser->getPage()->find('css','title')->getText(),
+                                'response' => $this->browser->getResponseHeaders(),
+                                'code' => $this->browser->getStatusCode()
+                            ];
                         }
                     }
 
                     $this->logger('Fillup','Possible Forms found : '.$found.'/'.count($inputsRequiredToValidate).' inputs passed',1);
 
                 }
-                $this->urls[$key]['forms'] = [
+                $hashkey = hash('crc32b',$url);
+
+                $this->urls[$hashkey]['forms'] = [
                     'found' => count($formshere),
                     'valid' => $validForms
                 ];
-                $this->logger('Fillup','Valid Forms : '.$validForms.'/'.count($formshere),2);
+                $this->addScanRecord('Fillup',''.$validForms.' out of '.count($formshere).' forms has been submitted',2);
+
+
+                // $this->addScanRecord('Done','Form # '.($k+1).' has been submitted');
             }else{
                 $this->logger('Fillup','No Forms found',0);
+                $this->addScanRecord('Fillup','No Forms found',0);
             }
-
-
-
+            $this->scanEnd = date("Y-m-d H:i:s");
 
         }
 
@@ -387,6 +545,9 @@ if(!class_exists('ContactXpress')){
                 fclose($logfile);
             }
         }
+
+
+
 
     }
 

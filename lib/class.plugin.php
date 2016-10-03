@@ -45,6 +45,12 @@ if(!class_exists('CONTACTXP')){
                     'type' => 'text',
                     'required' => true
                 ],
+                'subject' => [
+                    'label' => 'Subject',
+                    'description' => '',
+                    'type' => 'text',
+                    'required' => true
+                ],
                 'company' => [
                     'label' => 'Company Name',
                     'description' => '',
@@ -76,6 +82,9 @@ if(!class_exists('CONTACTXP')){
         {
             add_action('init', [&$this, 'init']);
             add_action('admin_init', [&$this, 'admin_init']);
+            add_action( 'wp_ajax_export_contact_grab_logs', [&$this , 'export_contact_grab_logs'] );
+            add_action( 'wp_ajax_nopriv_export_contact_grab_logs', [&$this , 'export_contact_grab_logs'] );
+
         }
 
         public function init(){
@@ -104,13 +113,13 @@ if(!class_exists('CONTACTXP')){
                 'supports' => array(
                     'title',
                 ),
+                'show_in_menu'       => false,
                 'taxonomies' => array( 'category' ), // add default post categories and tags
                 'menu_position' => 5,
                 'exclude_from_search' => true,
                 'register_meta_box_cb' => function(){
                     add_meta_box( 'domain_metabox', 'Domain Settings', [&$this,'show_meta_box'], 'domain', 'normal','high',['group'=>'domain_settings']);
                     add_meta_box( 'contact_pages_metabox', 'Contact Form Pages', [&$this,'show_meta_box_contact_pages'], 'domain', 'normal','high',['group'=>'contact_pages']);
-
                 }
             ));
 
@@ -140,7 +149,7 @@ if(!class_exists('CONTACTXP')){
                     'title',
                 ),
                 'taxonomies' => array( 'response_categories' ), // add default post categories and tags
-                'menu_position' => 5,
+                'show_in_menu'       => false,
                 'exclude_from_search' => true,
                 'register_meta_box_cb' => function(){
                     add_meta_box( 'domain_metabox', 'Response Fields', [&$this,'show_meta_box'], 'response', 'normal','high',['group'=>'response_fields']);
@@ -170,6 +179,16 @@ if(!class_exists('CONTACTXP')){
 
                 add_action( 'save_post_domain', [ &$this , 'save_meta_box' ]);
                 add_action( 'save_post_response', [ &$this , 'save_meta_box' ]);
+
+            }
+
+
+            public function admin_init(){
+                add_submenu_page( 'google-miner', 'wp-menu-separator', '', 'read', null, '' );
+                add_submenu_page( 'google-miner', 'Domains', 'Domains',
+                'manage_options', 'edit.php?post_type=domain', NULL );
+                add_submenu_page( 'google-miner', 'Responses', 'Responses',
+                'manage_options', 'edit.php?post_type=response', NULL );
             }
             public function show_meta_box($post,$meta){
                 $rss_data  = [];
@@ -225,9 +244,6 @@ if(!class_exists('CONTACTXP')){
                 include CONTACTXP_PLUGIN_DIR . 'partials/menu-domain-settings.php';
             }
 
-            public function admin_init(){
-
-            }
 
             public function menu_admin_view(){
                 require_once CONTACTXP_PLUGIN_DIR . 'partials/menu-admin-view.php';
@@ -242,6 +258,129 @@ if(!class_exists('CONTACTXP')){
             }
 
             public static function deactivate(){
+
+            }
+
+
+
+            public function export_contact_grab_logs() {
+                global $wpdb;
+                $sessions = get_post_meta($_POST['post'],'record_entry');
+
+                $objPHPExcel = new PHPExcel();
+
+                $post = get_post($_POST['post']);
+
+                // Set document properties
+                $objPHPExcel->getProperties()->setCreator("Gyps ". GMINER_VERSION ." by: Jenner F. Alagao")
+                ->setTitle("Gyps ". GMINER_VERSION ." Exported Data")
+                ->setDescription("Gyps ". GMINER_VERSION ." Exported Data");
+
+                $_x = 0;
+
+                $objPHPExcel->setActiveSheetIndex(0);
+                $objPHPExcel->getActiveSheet()->setTitle( $post->post_title );
+                $objPHPExcel->getActiveSheet()
+
+                ->setCellValue('A1', 'Domain Name')
+                ->setCellValue('B1', $post->post_title)
+
+                ->setCellValue('A2', 'Domain URL')
+                ->setCellValue('B2', get_post_meta($_POST['post'],'domain_url',true))
+
+                ->setCellValue('A3', 'Page URL Keywords')
+                ->setCellValue('B3', get_post_meta($_POST['post'],'page_url_keywords',true))
+
+                ->setCellValue('A7', '#: ' . $_state)
+                ->setCellValue('B7', 'Started')
+                ->setCellValue('C7', 'Ended')
+                ->setCellValue('D7', 'Result')
+                ->setCellValue('E7', 'Log')
+                ->setCellValue('F7', 'Response');
+
+                $i = 8;
+                foreach ( $sessions as $key => $session ){
+
+                    $statusstring = '';
+                    foreach ($session['status'] as $kk => $status) {
+                        if(isset($status['code'])){
+                            switch ($status['code']) {
+                                case '200':
+                                $statusstring = "OK (Status 200)";
+                                break;
+                                default:
+                                $statusstring = "Failed (Status ".$status['code'].")";
+                                break;
+                            }
+                        }else{
+                            $statusstring = "Failed (No status code)";
+                        }
+                    }
+
+                    $logstring = '';
+
+                    foreach ($session['log'] as $kk => $log) {
+                        $logstring .= "[".$log['time']."]".sprintf("[%-'#7s]",   ['ERROR','SUCCESS','INFO'][$log['status']]).' : '.$log['type'].' ~ '.$log['desc']."\n";
+                    }
+
+                    $responsestring = '';
+
+                    foreach ($session['status'] as $kk => $log) {
+                        $responsestring .= "Time : ".$log['time']."\n";
+                        $responsestring .= "URL : ".$log['url']."\n";
+                        $responsestring .= "Current : ".$log['current']."\n";
+                        $responsestring .= "Title : ".$log['title']."\n";
+                        $responsestring .= "Response : ".JSON_ENCODE($log['response'])."\n";
+                        $responsestring .= "Code : ".JSON_ENCODE($log['code'])."\n";
+                    }
+
+
+                    $objPHPExcel->getActiveSheet()
+                    ->setCellValue('A' . $i, ($key+1))
+                    ->setCellValue('B' . $i, date("M j h:i:s a",strtotime($session['started'])))
+                    ->setCellValue('C' . $i, date("M j h:i:s a",strtotime($session['ended'])))
+                    ->setCellValue('D' . $i, $statusstring)
+                    ->setCellValue('E' . $i, $logstring)
+                    ->setCellValue('F' . $i, $responsestring);
+
+                    $objPHPExcel->getActiveSheet()->getStyle('E' . $i)->getAlignment()->setWrapText(true);
+                    $objPHPExcel->getActiveSheet()->getStyle('F' . $i)->getAlignment()->setWrapText(true);
+
+                    $i++;
+                }
+
+                $objPHPExcel->getActiveSheet()
+                ->getStyle( $objPHPExcel->getActiveSheet()->calculateWorksheetDimension() )
+                ->getAlignment()->setHorizontal('left');
+
+
+                $objPHPExcel->getActiveSheet()
+                ->getStyle( $objPHPExcel->getActiveSheet()->calculateWorksheetDimension() )
+                ->getAlignment()->setVertical('top');
+
+                foreach(range('A','F') as $columnID) {
+                    $objPHPExcel->getActiveSheet()->getColumnDimension($columnID)
+                    ->setAutoSize(true);
+
+                }
+
+                $_fileName = sanitize_title($post->post_title) .'_'. date("Y-M-d_g_iA") . '_'. md5(date("Y-M-d_g_iA"));
+
+
+                if (wp_mkdir_p(CONTACTXP_PLUGIN_DIR .'/cache/')) {
+                    $_filePath = CONTACTXP_PLUGIN_DIR .'/cache/'.$_fileName .'.xlsx';
+                    $_fileURL = CONTACTXP_PLUGIN_URL .'/cache/'.$_fileName .'.xlsx';
+                }
+                
+                // Set active sheet index to the first sheet, so Excel opens this as the first sheet
+                $objPHPExcel->setActiveSheetIndex(0);
+
+                $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+                $objWriter->save( $_filePath , 'w');
+
+                $_ret = array("status"=>"DONE" , "url" => $_fileURL);
+                echo json_encode($_ret);
+                exit;
 
             }
 
